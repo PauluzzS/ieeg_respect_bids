@@ -1318,6 +1318,9 @@ try
         trig_v = [];
     end
     
+    % Clean annots from corrupt data after null character
+    annots(:,2)= strtok(annots(:,2),char(0));   % ignore characters after char(0)
+    
     %% Check the compulsory fields
     % Included; markers; situation name;Bad;(Bad field can appear more than once)
     % Resected;Edges;Format
