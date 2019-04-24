@@ -71,8 +71,10 @@ note_offset = fread(f,1,'uint32');
 
 i=1;
 annotations = cell(1,2);
-fseek(f,note_offset,-1);
+%fseek(f,note_offset,-1);
 while 1
+    offset=note_offset+44*(i-1);
+    fseek(f,offset,-1);
     notesamp = fread(f,1,'uint32');
     if notesamp==0
         break
