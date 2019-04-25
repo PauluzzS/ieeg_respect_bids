@@ -1461,6 +1461,9 @@ try
             channels_tsv = tdfread([files(1).folder,'/', files(1).name]);
             chan_cell = cellstr(channels_tsv.status_description);
             metadata.ch2use_included=cellfun(@(x) contains(x,{'included'}),chan_cell);
+            if numel(ch) ~= numel(metadata.ch2use_included)
+                error('ECoG with Included has different Num_Chan. Annotate Included again')
+            end
         else
             error('There is no ECoG with annotated Included')
         end
